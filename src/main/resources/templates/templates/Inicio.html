@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<div th:insert="Constante/constantes :: head"></div>
+<title>Inicio de sesion</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="Constante/constantes :: header"></header>
+<fieldset id="login">
+	<legend>Login</legend>
+	<form action="/inicio" method="post">
+		<label></label><input type="text" name="user"><br>
+		<label></label><input type="password" name="pass"><br>
+		<input type="submit" name="Iniciar sesion">
+		<p th:text="${mensaje}" style="color:red"></p>
+	</form>
+	<a href="/catalogo">Iniciar como guest</a>
+</fieldset>
+<footer th:replace="Constante/constantes :: footer"></footer>
+</body>
+</html>

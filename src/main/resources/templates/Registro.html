@@ -4,16 +4,17 @@
 <div th:include="Constante/constantes :: head"></div>
 <title>Registro</title>
 <meta charset="UTF-8">
+<script type="text/javascript" th:src="@{js/Scripts.js}"></script>
+<link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 <body>
 <header th:replace="Constante/constantes :: header"></header>
  <h1>Registro</h1>
 	<form th:action="@{/registro}" th:object="${usuario}" method="post">
-	<div>
-	<label>Nombre:<input type="text" name="nombre" th:value="${session.usuario?.nombre}" th:readonly="${true}"></label><br>
-	<label>Apellido 1:<input type="text" name="apellido" th:value="${session.usuario?.apellido1}" th:readonly="${true}"></label><br>
-	<label>Apellido 2:<input type="text" name="apellido2" th:value="${session.usuario?.apellido2}" th:readonly="${true}"></label><br>
-	<!-- ${(${vista})?true:false} -->
+	<div th:fragment="formulario">
+	<label>Nombre:<input type="text" name="nombre"></label><br>
+	<label>Apellido 1:<input type="text" name="apellido" ></label><br>
+	<label>Apellido 2:<input type="text" name="apellido2"></label><br>
 	<label>Correo electronico:<input type="text" name="email" required></label><br>
 	<label>Direccion:<input type="text" name="direccion" ></label><br>
 	<label>Provincia:<input type="text" name="provincia" ></label><br>
@@ -21,10 +22,9 @@
 	<label>Telefono:<input type="text" name="telefono" ></label><br>
 	<label>DNI:<input type="text" name="dni" ></label><br>
 	<label>Clave:<input type="password" name="clave" required></label><br>
-	<div th:if="${perfil}"><label>Rol</label><input type="text" disabled="disabled" th:text="${session.usuario?.rol.descripcion}"></div>
 	</div>
-	<input type="hidden" name="rol" th:value="${(session.usuario.rol.id != 3)?1:2}"><br>
-	<input type="submit" name="Enviar Datos/Actualizar">
+	<input type="hidden" name="rol" value="1" ><br>
+	<input type="submit" name="Enviar Datos">
 	</form>
 	
 <footer th:replace="Constante/constantes :: footer"></footer>

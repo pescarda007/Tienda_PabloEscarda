@@ -21,4 +21,7 @@ public class ServiciosProducto {
 		return pr.findById(i).get();
 	}
 	
+	public void actualizar(Producto p) {
+		pr.save(p);
+	}
 }

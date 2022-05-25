@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +21,9 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@JoinColumn(name="id_rol")
 	@ManyToOne (cascade = CascadeType.ALL)
 	private Rol rol;
-	private int id_rol;
 	private String nombre;
 	private String clave;
 	private String email;
@@ -32,7 +34,8 @@ public class Usuario {
 	private String localidad;
 	private String telefono;
 	private String dni;
-
+	@Transient
+	private int id_rol;
 	public Usuario() {
 		super();
 		this.rol = null;

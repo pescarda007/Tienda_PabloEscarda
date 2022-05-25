@@ -11,6 +11,7 @@ import com.modelo.repositorios.UsuarioRepository;
 public class ServiciosUsuario {
 	@Autowired
 	private UsuarioRepository ur;
+	
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	public ArrayList<Usuario> obtenerUsuarios(){
@@ -38,9 +39,18 @@ public class ServiciosUsuario {
 	}
 
 	public void actualizarUsuario(Usuario obj) {
-		ur.save(obj);
+		Usuario actualiza = ur.findById(obj.getId()).get();
+		actualiza.setApellido1(obj.getApellido1());
+		actualiza.setApellido2(obj.getApellido2());
+		actualiza.setDireccion(obj.getDireccion());
+		actualiza.setEmail(obj.getEmail());
+		actualiza.setNombre(obj.getNombre());
+		actualiza.setTelefono(obj.getTelefono());
+		actualiza.setProvincia(obj.getProvincia());
+		actualiza.setLocalidad(obj.getLocalidad());
+		actualiza.setDni(obj.getDni());
+		ur.save(actualiza);
 	}
-
 	
 	public void delete(int id) {
 		Usuario obj = getUsuario(id);

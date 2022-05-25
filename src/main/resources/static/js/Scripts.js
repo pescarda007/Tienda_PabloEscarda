@@ -16,8 +16,3 @@ function ponerCantidad(id, enlace) {
 	enlace.href = url;
 }
 
-function informarUsuario(){
-	if(confirm()){
-		
-	}
-}

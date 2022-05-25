@@ -19,35 +19,32 @@
 <body>
 	<header th:replace="Constante/constantes :: header"></header>
 	<h1>Mi perfil</h1>
-	<form th:action="@{/usuario/actualizar}" th:object="${usuario}" method="post">
+	<form th:action="@{/emple/usuario/actualizar}" th:object="${usuario}" method="post">
 		<div>
 			<label>Nombre:<input type="text" name="nombre"
-				th:value="${session.usuario?.nombre}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.nombre}" th:readonly="${vista}"></label><br>
 			<label>Apellido 1:<input type="text" name="apellido1"
-				th:value="${session.usuario?.apellido1}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.apellido1}" th:readonly="${vista}"></label><br>
 			<label>Apellido 2:<input type="text" name="apellido2"
-				th:value="${session.usuario?.apellido2}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.apellido2}" th:readonly="${vista}"></label><br>
 			<!-- ${(${vista})?true:false} -->
 			<label>Correo electronico:<input type="text" name="email"
-				required th:value="${session.usuario?.email}" th:readonly="${vista}"></label><br>
+				required th:value="${usuario?.email}" th:readonly="${vista}"></label><br>
 			<label>Direccion:<input type="text" name="direccion"
-				th:value="${session.usuario?.direccion}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.direccion}" th:readonly="${vista}"></label><br>
 			<label>Provincia:<input type="text" name="provincia"
-				th:value="${session.usuario?.provincia}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.provincia}" th:readonly="${vista}"></label><br>
 			<label>Localidad:<input type="text" name="localidad"
-				th:value="${session.usuario?.localidad}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.localidad}" th:readonly="${vista}"></label><br>
 			<label>Telefono:<input type="text" name="telefono"
-				th:value="${session.usuario?.telefono}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.telefono}" th:readonly="${vista}"></label><br>
 			<label>DNI:<input type="text" name="dni"
-				th:value="${session.usuario?.dni}" th:readonly="${vista}"></label><br>
+				th:value="${usuario?.dni}" th:readonly="${vista}"></label><br>
 			<label>Rol:<input type="text" disabled="disabled"
-				th:value="${session.usuario?.rol.rol}" th:readonly="${vista}"></label>
+				th:value="${usuario?.rol.rol}" th:readonly="${vista}"></label>
+			<input type="hidden" name="idUsuario" th:value="${usuario.id}">
 		</div>
-		<input type="submit" name="Actualizar" th:if="${!vista}">
-		<div th:if="${vista}">
-			<a th:href="@{/usuario/actualizar}"><button>Activar
-					actualizar datos</button></a>
-		</div>
+		<input type="submit" name="Actualizar" th:disabled="${vista}">
 	</form>
 	<footer th:replace="Constante/constantes :: footer"></footer>
 </body>
